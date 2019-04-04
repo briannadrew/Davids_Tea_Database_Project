@@ -8,14 +8,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.GridPane?>
 
-<GridPane alignment="CENTER" hgap="10.0" prefHeight="450.0" prefWidth="500.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
+<GridPane alignment="CENTER" hgap="10.0" prefHeight="500.9999000000025" prefWidth="948.9999000000025" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller">
   <children>
-    <AnchorPane prefHeight="400.0" prefWidth="500.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
+    <AnchorPane prefHeight="500.9999000000025" prefWidth="949.0" style="" GridPane.columnIndex="0" GridPane.rowIndex="0">
       <children>
-        <Button layoutX="32.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#organizeInventory" pickOnBounds="false" prefHeight="42.0" prefWidth="118.0" style="-fx-background-color : turquoise" text="Organize" textFill="BLACK" />
-        <Button layoutX="400.0" layoutY="378.0" minHeight="14.0" mnemonicParsing="false" onMouseClicked="#addSomething" prefHeight="26.0" text="Add" />
-        <Button layoutX="400.0" layoutY="410.0" mnemonicParsing="false" onMouseClicked="#removeItem" text="Remove" />
-        <TextField layoutX="157.0" layoutY="212.0" prefWidth="200.0" />
+        <Button layoutX="808.0" layoutY="389.0" minHeight="14.0" mnemonicParsing="false" onMouseClicked="#addSomething" prefHeight="42.0" prefWidth="89.0" text="Add" />
+        <Button layoutX="808.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#removeItem" prefHeight="42.0" prefWidth="89.0" text="Remove" />
+        <Label layoutX="39.0" layoutY="329.0" text="Sort by:" />
+        <MenuButton layoutX="109.0" layoutY="326.0" mnemonicParsing="false" text="MenuButton">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Action1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+          </items>
+        </MenuButton>
+        <Label layoutX="22.0" layoutY="14.0" prefHeight="197.0" prefWidth="901.0" text="Output" />
       </children>
     </AnchorPane>
   </children>

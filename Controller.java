@@ -15,7 +15,6 @@ public class Controller{
 
     public void addSomething(){
         Popup.display();
-
     }
 
     public void removeItem(){

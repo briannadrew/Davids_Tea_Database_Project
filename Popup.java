@@ -8,7 +8,6 @@ import javafx.stage.*;
 
 import javax.xml.soap.Text;
 
-
 public class Popup {
 
     public static void display() {
@@ -43,7 +42,6 @@ public class Popup {
         addTeaWindow.setTitle("Add a tea");
 
         Label label1 = new Label("What tea do you want to add?");
-        TextField enterItemNum = new TextField("Enter a number greater than 334");
         TextField enterName = new TextField("Enter a name for your product");
         TextField enterDescription = new TextField("Enter a description");
         TextField enterType = new TextField("What type of tea is it?");
@@ -52,23 +50,55 @@ public class Popup {
         TextField enterStock = new TextField("Enter the available stock");
 
         Button buttonAddTea = new Button("Add tea");
-        buttonAddTea.setOnAction(e -> checkTextFields("tea",));
+        buttonAddTea.setOnAction(e -> checkTextFields("tea", enterName.getText(), enterDescription.getText(), enterType.getText(), enterPricePer50g.getText(), enterCaffeineLevel.getText(), enterStock.getText()));
 
         Button buttonClose = new Button("Close this pop up window");
         buttonClose.setOnAction(e -> addTeaWindow.close());
 
-
-
         VBox layout = new VBox(10);
-        layout.getChildren().addAll(label1, enterItemNum, enterName, enterDescription, enterType, enterPricePer50g, enterCaffeineLevel, enterStock, buttonClose);
-        //layout.setAlignment(Pos.CENTER);
+        layout.getChildren().addAll(label1, enterName, enterDescription, enterType, enterPricePer50g, enterCaffeineLevel, enterStock, buttonClose, buttonAddTea);
+        layout.setAlignment(Pos.CENTER);
 
         Scene addTeaScene = new Scene(layout, 500, 450);
         addTeaWindow.setScene(addTeaScene);
         addTeaWindow.showAndWait();
         System.out.println("prints when the window is closed");
     }
-    public static void checkTextFields(String methodCaller, String itemNum, String name, String description, String type, String pricePer50g, String caffeineLevel, String stock){
+    public static void checkTextFields(String methodCaller, String name, String description, String type, String pricePer50g, String caffeineLevel, String stock){
+
+        double price50g = 0.0;
+        try {
+            price50g = Double.parseDouble(pricePer50g);
+        }
+        catch (NumberFormatException e)
+        {
+            Stage popupError = new Stage();
+            popupError.initModality(Modality.APPLICATION_MODAL);
+            popupError.setTitle("NOT A PROPER NUMBER");
+            Label labelErrorNum = new Label("Please enter a proper price per 50g that is greater than 0.0(eg; 5.0)");
+            Button buttonClose = new Button("Close window");
+            buttonClose.setOnAction(f -> popupError.close());
+            VBox layout = new VBox(10);
+            layout.getChildren().addAll(labelErrorNum, buttonClose);
+            layout.setAlignment(Pos.CENTER);
+            Scene errorScene = new Scene(layout, 400,350);
+            popupError.setScene(errorScene);
+            popupError.showAndWait();
+        }
+        if (price50g <= 0.0){
+            Stage popupError = new Stage();
+            popupError.initModality(Modality.APPLICATION_MODAL);
+            popupError.setTitle("NOT A PROPER NUMBER");
+            Label labelErrorNum = new Label("Please enter a proper price per 50g that is greater than 0.0(eg; 5.0)");
+            Button buttonClose = new Button("Close window");
+            buttonClose.setOnAction(f -> popupError.close());
+            VBox layout = new VBox(10);
+            layout.getChildren().addAll(labelErrorNum, buttonClose);
+            layout.setAlignment(Pos.CENTER);
+            Scene errorScene = new Scene(layout, 400,350);
+            popupError.setScene(errorScene);
+            popupError.showAndWait();
+        }
 
         switch(methodCaller){
             case "tea":
